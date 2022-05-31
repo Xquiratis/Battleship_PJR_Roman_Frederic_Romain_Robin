@@ -1,22 +1,25 @@
 #include "bateau.h"
 
-bateau::bateau(int x, int y, int taille, string orientation) {
+
+
+bateau::bateau()
+{
+    
+	this->orientation = 0;
+	for (int i = 0; i < this->taille; i++) {
+		this->tabVie[i] = 1;
+	}
+	for (int i = taille; i < 5; i++)
+	{
+		this->tabVie[i] = 0;
+	}
+}
+
+bateau::bateau(int x, int y, int taille, int orientation) {
 	this->posX = x;
 	this->posY = y;
 	this->taille = taille;
 	this->orientation = orientation;
-}
-
-bateau::bateau()
-{
-	this->orientation = "None";
-	for (int i = 0; i < this->taille; i++) {
-		this->tabVie[i] = "intact";
-	}
-	for (int i = taille; i < 5; i++)
-	{
-		this->tabVie[i] = "None";
-	}
 }
 
 void bateau::afficherCoordonnees()
@@ -42,13 +45,13 @@ int bateau::getPosX() {
 int bateau::getPosY() {
 	return this->posY;
 }
-string bateau::getOrientation() {
+int bateau::getOrientation() {
 	return this->orientation;
 }
 int bateau::getTaille() {
 	return this->taille;
 }
-string bateau::getTabVie(int num) {
+int bateau::getTabVie(int num) {
 	return this->tabVie[num];
 }
 
@@ -59,12 +62,58 @@ void bateau::setPosX(int posX) {
 void bateau::setPosY(int posY) {
 	this->posY = posY;
 }
-void bateau::setOrientation(string orientation) {
+void bateau::setOrientation(int orientation) {
 	this->orientation = orientation;
 }
 void bateau::setTaille(int taille) {
 	this->taille = taille;
 }
-void bateau::setTabVie(int num, string valeur) {
+void bateau::setTabVie(int num, int valeur) {
 	this->tabVie[num] = valeur;
+}
+
+//RECEPTION SHOT
+int bateau::getShot(int x, int y){
+    int recep_vie = 0;
+    int resultat = PLOUF;
+
+    for(int j=0 ; j <this->taille;j++){
+        if(this->orientation == OUEST){
+            if ((this->posX == x+j) && (this->posY == y)){
+                //touché !
+                this->tabVie[j] = 1;
+                resultat = TOUCHE;
+            }
+        }else if(this->orientation == NORD){
+            if ((this->posX == x) && (this->posY == y+j)){
+                //touché !
+                this->tabVie[j] = 1;
+                resultat = TOUCHE;
+            }
+        }else if(this->orientation == EST){
+
+            if ((this->posX == x-j) && (this->posY == y)){
+                //touché !
+                this->tabVie[j] = 1;
+                resultat = TOUCHE;
+            }
+        }else if(this->orientation == SUD){
+
+            if ((this->posX == x) && (this->posY == y-j)){
+                //touché !
+                this->tabVie[j] = 1;
+                resultat = TOUCHE;
+            }
+        }
+    }
+    
+
+    for(int j=0 ; j <this->taille;j++){
+        recep_vie += this->tabVie[j];
+    }
+
+    if (recep_vie == this->taille) resultat = COULE;
+
+    return resultat;
+
 }
