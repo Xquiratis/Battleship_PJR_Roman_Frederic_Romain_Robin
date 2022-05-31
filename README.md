@@ -25,4 +25,5 @@ https://docs.google.com/document/d/1RV702MYjg2eV15HHy4KW6DfOcbF0IXMHAm0cm-5HtNc/
   
   *Diagramme des cas d'utilisation
   
+  *CR mettre les algos et surtout expliquer les choix de conception
 
