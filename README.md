@@ -10,18 +10,18 @@ Here is the TP Statement :
 
 TO-DO LIST :
 
-  Coding class Partie,Joueur,bateau
+  *Coding class Partie,Joueur,bateau
 
-  Coding the main program 
+  *Coding the main program 
 
-  Coding the graphical interface
+  *Coding the graphical interface
 
-  Implement Google test
+  *Implement Google test
   
-  "Faire une jeux d'essais pour la prof"
+  *"Faire une jeux d'essais pour la prof"
 
-  Doxygen
+  *Doxygen
   
-  Diagramme des cas d'utilisation
+  *Diagramme des cas d'utilisation
   
 
